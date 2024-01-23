@@ -1,0 +1,60 @@
+{
+  "name": "react-native-security",
+  "version": "0.1.1",
+  "description": "react native implementation based on https://github.com/darvincisec/DetectFrida",
+  "main": "lib/commonjs/index",
+  "module": "lib/module/index",
+  "types": "lib/typescript/src/index.d.ts",
+  "react-native": "src/index",
+  "source": "src/index",
+  "files": [
+    "src",
+    "lib",
+    "android",
+    "ios",
+    "cpp",
+    "*.podspec",
+    "!ios/build",
+    "!android/build",
+    "!android/gradle",
+    "!android/gradlew",
+    "!android/gradlew.bat",
+    "!android/local.properties",
+    "!**/__tests__",
+    "!**/__fixtures__",
+    "!**/__mocks__",
+    "!**/.*"
+  ],
+  "scripts": {
+    "example": "yarn workspace react-native-security-example",
+    "test": "jest",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint \"**/*.{js,ts,tsx}\"",
+    "clean": "del-cli android/build example/android/build example/android/app/build example/ios/build lib",
+    "release": "release-it"
+  },
+  "keywords": [
+    "react-native",
+    "ios",
+    "android"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eibifasttest/react-native-security.git"
+  },
+  "author": "chonglim <chonglim.tan@ifastfinancial.com> (https://github.com/eibifasttest/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/eibifasttest/react-native-security/issues"
+  },
+  "homepage": "https://github.com/eibifasttest/react-native-security#readme",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "devDependencies": {
+    "np": "^7.5.0"
+  },
+  "workspaces": [
+    "example"
+  ]
+}
