@@ -86,11 +86,11 @@ void detectfrida() {
     parse_proc_maps_to_fetch_path(filePaths);
 //    __android_log_print(ANDROID_LOG_VERBOSE, APPNAME, "Libc[%x][%x][%x][%x][%x][%x]", __NR_openat,
 //                        __NR_lseek, __NR_read, __NR_close, __NR_readlinkat, __NR_nanosleep);
-    for (int i = 0; i < NUM_LIBS; i++) {
-        fetch_checksum_of_library(filePaths[i], &elfSectionArr[i]);
-        if (filePaths[i] != NULL)
-            free(filePaths[i]);
-    }
+//    for (int i = 0; i < NUM_LIBS; i++) { //these code cause crash
+//        fetch_checksum_of_library(filePaths[i], &elfSectionArr[i]);
+//        if (filePaths[i] != NULL)
+//            free(filePaths[i]);
+//    }
     pthread_t t;
     pthread_create(&t, NULL, (void *) detect_frida_loop, NULL);
 
@@ -193,14 +193,14 @@ static inline bool fetch_checksum_of_library(const char *filePath, execSection *
 void detect_frida_loop(void *pargs) {
 
     struct timespec timereq;
-    timereq.tv_sec = 5; //Changing to 5 seconds from 1 second
+    timereq.tv_sec = 10; //Changing to 5 seconds from 1 second
     timereq.tv_nsec = 0;
 
     while (1) {
 
         detect_frida_threads();
         detect_frida_namedpipe();
-        detect_frida_memdiskcompare();
+//        detect_frida_memdiskcompare(); //this method cause crash
 
 
         my_nanosleep(&timereq, NULL);
